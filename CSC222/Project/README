@@ -1,0 +1,134 @@
+Caleb Matherne
+
+I included lots of comments throughout my code so a lot of this is just copy pasted but I explain more in depth on some of the lines here that might need explaining.
+
+# - # <-- the lines that are being commented on
+    comments
+
+
+
+1 - 7
+    Include libraries.
+
+9
+    Debug. Includes [headers] for functions to see where each one is in effect. Also prints the arguments as they are parsed, along with input / output files.
+
+10 - 11
+    Define varibles that are used to allocate space for the command prompt.
+
+14
+    Define shell prompt format. Not entirely sure what it means but it works. 
+    (Got it online) I also formated it with color to seperate it from the user input, but seems to mess with the typescript file.
+
+16 - 20
+    Function declarations / headers / prototypes. I forget what they are actually called you get the idea.
+
+22 - 65
+    Main function.
+
+    27 - 38
+        Declaring variables and allocating space as needed. Had lots of trouble here with what needed to be allocated, how much to allocate, and how to allocate. Found that the current configuration works so I left it.
+
+    40 - 63
+        Main loop that the functions are called in.
+
+        41
+            print_prompt(). Print the shell prompt. More info on these functions later.
+
+        42
+            get_input(). Get user input.
+
+        43
+            parse_input(). Parse the input into an argument array, separating out input and output files.
+
+        45 - 51
+            Catch the "cd" argument. I probably could have included this in the execute_command() function but I'm just ready to be done with this.
+
+        52 - 54
+            Catch the "exit" argument. I don't how I would put this into the execute_command() function bc it would have to break out of the while loop that the function is in and I'm not sure if that's possible.
+
+        56
+            execute_command(). Takes the parsed input and puts it into execvp(), redirecting IO as necessary.
+
+        58 - 62
+            Free / clear the allocated memory. Again, I had some problems here.
+
+    63
+        Return 0, end program.
+
+67 - 81
+    print_prompt(). Prints the shell prompt.
+
+    74
+        Create a character array to store the current working directory.
+
+    75 - 80
+        If the cwd can be obtained, then print the cwd in the previously defined .prompt format. Else, print an error.
+
+83 - 98
+    get_input(). Get and return user input.
+    
+    90 - 94
+        Allocate memory for input, printing an error message if it fails.
+
+    95
+        Set input variable to the user's input.
+
+    96
+        Strip the input of the newline character (\n).
+
+    97
+        Return the modified input.
+
+100 - 137 
+    parse_input(). Takes the user input and separates it into individual arguments and input/output files.
+
+    107
+        Initialize index variable.
+
+    108
+        Get first token.
+
+    114 - 130
+        Loop to get the rest of the tokens.
+
+        115 - 117
+            If token is "<" the next token is the input file.
+
+        118 - 120
+            If token is ">" the next token is the output file.
+
+        121 - 124
+            Else, it's just a regular token and append it to the args array.
+
+        125
+            Get the next token
+
+    136
+        End the args array with NULL because NULL is required at the end of an array of arguments for execvp() to execute.
+
+139 - 183
+    Executes the command, redirecting stdin/stdout accordingly.
+
+    146
+        Use fork() to create a child process
+
+    147 - 150
+        If the pid = -1, the fork failed, print an error message.
+
+    151 - 176
+        Child process
+
+        153 - 162
+            If an input file is given, open the file to read. If the input file is invalid, print an error message. Redirect the input from the file with dup2() and close the file.
+
+        163 - 172
+            If an output file is given, open the file to write. If the output file is invalid, print an error message. Redirect the output from the file with dup2() and close the file.
+
+        173 - 175
+            Execute the function held within tokens by the array args. If execvp returns, it failed and print an error message.
+
+    177 - 182
+        Parent process. Wait for the child to end. Print an error if the child returns.
+
+        

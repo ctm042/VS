@@ -1,0 +1,7 @@
+FTP server on 138.47.136.89
+user:    sqsghxtgsu
+pass:    tkwuzezuwiba
+
+Of course, the actual username and password must be decrypted to login
+properly. They were both encrypted the same number of times using
+vigenere cipher with the following key: "cyberstorm"

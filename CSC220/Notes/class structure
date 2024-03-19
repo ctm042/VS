@@ -1,0 +1,80 @@
+// super class
+class Person {
+
+  // instance variables
+  String name;
+  int age;
+  boolean isStudent;
+
+  // constructor 
+  // (takes arguments/parameters when Person class is called and sets them to the class variables)
+  Person(String name, int age) {
+    this.name = name;
+    this.age = age;
+    this.isStudent = false;
+  }
+
+    // getter / accessor
+    // public String getName(){
+    //     return name;
+    // }
+
+    // setter / mutator
+    // public void setName(String name){
+    //     this.name = name;
+    // }
+  
+  // method
+  public void birthday(){
+
+    // increase age by 1
+    this.age += 1;
+  }
+
+  // string method 
+  // (called when System.out.println())
+  public String toString(){
+    String result = "";
+    result += this.name + " is ";
+    if (this.isStudent){
+      result += "a student ";
+    }
+    else {
+      result += "not a student ";
+    }
+    result += "and is " + String.valueOf(this.age) + " years old";
+    return result;
+  }
+}
+
+// subclass
+class Student extends Person {
+
+  //constructor
+  public Student(String name, int age){
+
+    //uses parent's constructor
+    super(name, age);
+
+    //new variable
+    this.isStudent = true;
+  }
+}
+
+// main class
+public class Main {
+  public static void main(String[] args) {
+
+    // make student object
+    Student student = new Student("Bob", 20);
+
+    // print, use class method, print
+    System.out.println(student);
+    student.birthday();
+    System.out.println(student);
+
+    // make a person object and print
+    Person person = new Person("Rob", 22);
+    System.out.println(person);
+  }
+}

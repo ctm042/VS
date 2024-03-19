@@ -1,0 +1,62 @@
+Script started on 2023-02-23 20:58:49-06:00 [TERM="xterm-256color" TTY="/dev/pts/6" COLUMNS="172" LINES="26"]
+[?2004h]0;caleb@caleb-csc222: ~/Desktop/VS-Workspace/Project[01;32mcaleb@caleb-csc222[00m:[01;34m~/Desktop/VS-Workspace/Project[00m$ ./a.out
+[?2004l[1;32m/home/caleb/Desktop/VS-Workspace/Project$[0m pwd
+/home/caleb/Desktop/VS-Workspace/Project
+[1;32m/home/caleb/Desktop/VS-Workspace/Project$[0m ls  cd ..
+[1;32m/home/caleb/Desktop/VS-Workspace$[0m ls  pwd
+/home/caleb/Desktop/VS-Workspace
+[1;32m/home/caleb/Desktop/VS-Workspace$[0m cd Project
+[1;32m/home/caleb/Desktop/VS-Workspace/Project$[0m ls -lh techshell.c
+-rw-rw-r-- 1 caleb caleb 6.0K Feb 23 20:46 techshell.c
+[1;32m/home/caleb/Desktop/VS-Workspace/Project$[0m chmod 400 techshell.c
+[1;32m/home/caleb/Desktop/VS-Workspace/Project$[0m ls -lh techshell.c
+-r-------- 1 caleb caleb 6.0K Feb 23 20:46 techshell.c
+[1;32m/home/caleb/Desktop/VS-Workspace/Project$[0m l chmod 664 techshell.c
+[1;32m/home/caleb/Desktop/VS-Workspace/Project$[0m ls /root
+ls: cannot open directory '/root': Permission denied
+[1;32m/home/caleb/Desktop/VS-Workspace/Project$[0m horseface
+execvp: No such file or directory
+[1;32m/home/caleb/Desktop/VS-Workspace/Project$[0m cd /root
+chdir() error: Permission denied
+[1;32m/home/caleb/Desktop/VS-Workspace/Project$[0m ps
+    PID TTY          TIME CMD
+   5828 pts/7    00:00:00 bash
+   5895 pts/7    00:00:00 a.out
+   7220 pts/7    00:00:00 ps
+[1;32m/home/caleb/Desktop/VS-Workspace/Project$[0m whereis ps
+ps: /usr/bin/ps /usr/share/man/man1/ps.1.gz
+[1;32m/home/caleb/Desktop/VS-Workspace/Project$[0m /bin/ps u
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+caleb       1052  0.0  0.2 171036  4628 tty2     Ssl+ 20:40   0:00 /usr/libexec/gdm-wayland-session env GNOME_SHELL_SESSION_MODE=ubuntu /usr/bin/gnome-session --session=ubu
+caleb       1056  0.0  0.5 231684 10712 tty2     Sl+  20:40   0:00 /usr/libexec/gnome-session-binary --session=ubuntu
+caleb       2386  0.0  0.2  20080  5580 pts/0    Ss   20:48   0:00 /usr/bin/bash --init-file /snap/code/119/usr/share/code/resources/app/out/vs/workbench/contrib/terminal/b
+caleb       2439  0.0  0.0  17040  1076 pts/0    S+   20:48   0:00 script
+caleb       2440  0.0  0.2  19928  5376 pts/1    Ss   20:48   0:00 bash -i
+caleb       2503  0.0  0.0  17040  1080 pts/1    S+   20:48   0:00 script
+caleb       2504  0.0  0.2  19928  5372 pts/2    Ss   20:48   0:00 bash -i
+caleb       2829  0.0  0.0  17040  1080 pts/2    S+   20:49   0:00 script
+caleb       2830  0.0  0.2  19928  5408 pts/3    Ss   20:49   0:00 bash -i
+caleb       4983  0.0  0.0  17040  1076 pts/3    S+   20:54   0:00 script
+caleb       4984  0.0  0.2  19928  5412 pts/4    Ss   20:54   0:00 bash -i
+caleb       5164  0.0  0.0  17040  1080 pts/4    S+   20:57   0:00 script
+caleb       5165  0.0  0.2  19928  5420 pts/5    Ss   20:57   0:00 bash -i
+caleb       5306  0.0  0.0  17040  1076 pts/5    S+   20:57   0:00 script
+caleb       5307  0.0  0.2  19928  5432 pts/6    Ss   20:57   0:00 bash -i
+caleb       5827  0.0  0.0  17040  1080 pts/6    S+   20:58   0:00 script
+caleb       5828  0.0  0.2  19928  5336 pts/7    Ss   20:58   0:00 bash -i
+caleb       5895  0.0  0.0   2772  1528 pts/7    S+   20:58   0:00 ./a.out
+caleb       7458  0.0  0.0  21324  1564 pts/7    R+   21:00   0:00 /bin/ps u
+[1;32m/home/caleb/Desktop/VS-Workspace/Project$[0m ls
+a.out  techshell.c  typescript
+[1;32m/home/caleb/Desktop/VS-Workspace/Project$[0m ps u > ps.out
+[1;32m/home/caleb/Desktop/VS-Workspace/Project$[0m wc -l < ps.out
+20
+[1;32m/home/caleb/Desktop/VS-Workspace/Project$[0m wc -l < ps.out >wc.ou      wc.out
+[1;32m/home/caleb/Desktop/VS-Workspace/Project$[0m cat wc.out
+20
+[1;32m/home/caleb/Desktop/VS-Workspace/Project$[0m ls
+a.out  ps.out  techshell.c  typescript	wc.out
+[1;32m/home/caleb/Desktop/VS-Workspace/Project$[0m rm ps.out wc.out
+[1;32m/home/caleb/Desktop/VS-Workspace/Project$[0m ls
+a.out  techshell.c  typescript
+[1;32m/home
