@@ -73,5 +73,34 @@ NEW LIBRARY FUNCTIONS
 
     TextIo.inputN : instream * int -> string (* vector *)
         Inputs a file and non-negative integer and then reads that number of characters from the file and returns them as a string.
+
+    TextIO.inputLine : instream -> string option
+        Reads and consumes from the file one line at a time and returns as a string option.
+
+    TextIO.input1 : instream -> char (* aka elem *) option
+        Reads and consumes from the file one char at a time and returns as char option. 
+
+    TextIO.lookahead : instream -> char (* aka elem *) option
+        Reads but does not consume the next char in the file and returns as char option.
+
+FILE WRITING
+NEW TYPE: outstream
+
+NEW LIBRARY FUNCTIONS
+    TextIO.openOut : string -> outstream    (* Overwrite *)
+        Open a file for writing.
+    
+    TextIO.openAppend : string -> outstream     (* Adding to *)
+        Open a file for appending.
+
+    TextIO.closeOut : outstream -> unit
+        Close a file that was used for writing and return unit.
+
+    TextIO.output : outstream * string -> unit
+        Write the string to the output file and return unit.
+
+    TextIO.stdIn : instream
+    TextIO.stdOut : outstream
+
 *)
 
