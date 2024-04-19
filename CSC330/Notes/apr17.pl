@@ -80,4 +80,136 @@ NOW BACKTRACKING: Prolog will now try to go back to the last successful goal and
 Line 53 is the next match: parent(anakin, leia), parent(leia, ben)
 Then prolog tries to match parent(leia, ben) and succeeds on line ?. NOW SUCCESS ON THE RIGHT SIDE OF:-!! Now prolog outputs any instantiated variables that we asked for in the original goal we tiped into the interpreter, which is
     A = anakin
+At the prompt, we type ; which forces a fail and backtrack.
+
+Line 54 is the next match: parent(padme, luke),parent(luke, ben)
+Then tries to unify parent(luke, ben). Failure, then backtrack.
+
+Line 55 is the next match: parent(padme, leia), parent(leia, ben).
+Then parent(leia, ben) succeeds. Output A = padme. At prompt we type ; which forces a fail and backtrack.
+
+Line 56 is the next match: parent(leia, ben), parent(ben, ben).
+Then parent(ben, ben) fails. Then backtrack.
+
+Line 57 is the next match: parent(han, ben), parent(ben, ben).
+Then parent(ben, ben) fails. Then backtrack.
+
+There are no more matches. As far as prolog knows, the right side of the :- has failed, and so the final response is false.
+
+Ex.Suppose that prolog has read the following file/database into the interpreter.
+*/
+
+boy(alex).
+boy(brandon).
+girl(claire).
+girl(denise).
+couple(P, Q) :- boy(P), girl(Q).
+
+/*
+Predict the response from the prolog interpreter to the following goals.
+
+?- boy(aaron).
+    false
+    .
+?- boy(alex).
+    true.
+
+?- girl(G).
+    G = claire ;
+    G = denise.
+
+?- couple(alex, G).
+    G = claire ;
+    G = denise.
+
+?- couple(B, G).
+    B = alex,
+    G = denis ;
+    B = alex,
+    G = claire ;
+    B = aaron,
+    G = denis ;
+    B = aaaron,
+    G = claire ;
+        <All possible boy-girl matches>
+
+PREDICATES (analog to functions in ML)
+Predicates are expressions in prolog that evaluate to true or false, aka succeed or fail.
+This type of evaluation is the basis for driving prolog programs. First, let's look at some built-in predicate, then proctice writing our own.
+
+BUILT-IN PREDICATES
+
+halt/0
+    Exits the compiler/interpreter
+
+consult/1
+    loads a file /database into the interpreter
+
+write/1
+    The argument is a prolog term and the predicate will write the term to the current output stream. Always succeeds except on backtracking.
+        write(jace).
+            jace
+            true.
+
+        write('Hello World').
+            Hello World
+            true.
+
+n1/0
+    Writes a new line to the current outpun stream. Always succeeds except on backtracking.
+
+Note: You can use the write/1 and n1/0 predicates to debug your prolog code by displaying intermediate variable binding during execution. You can also use them to pretty-up displays.
+
+Ex. Rewrite the grandparent rule in our star wars example so that it will print the intermediate parent bindings between the grandparent and grandchild during execution.
+COMMENT OUT THE ORIGINAL GRANDPARENT RULE.
+ */
+grandparent(X, Y) :- parent(X, Y), parent(Z, Y), write(Z), nl.
+
+/*
+Just for looks, let's add some bells and whistles so that it looks like we have an AI response.
+*/
+grandparent(X, Y) :- parent(X, Y), parent(Z, Y), write(Y), write(' is a child of '), write(Z), write(' who is a child of '), nl.
+
+/*
+Let's practice writing our own prolog rules to accomplish tasks, starting with the star wars example. When writing prolog rules, one approach to think about it is:
+    <for this goal to succeed> :- <these goals must be satisfied>
+
+Ex. Add predicate isParent/1 that succeeds when its argument is the parent of anyone in the database. For example,
+    ?- isParent(ben).
+    false.
+
+    ?- isParent(padme).
+    true.
+*/
+isParent(A) :- parent(A, B).
+
+/*
+Note: The wildcard symbol in prolog is the underscore. A variable that appears only once will cause a "singleton" warning because it's not being used.
+*/
+isParent(A) :- parent(A, _).
+
+/*
+Ex. Write a predicate named areSiblings/2 that succeeds when the arguments have at least one parent in common.
+*/
+areSiblings(A,B) :- parent(C,A), parent(C,B).
+
+/*
+Ex. (Abstract) Suppose that the following predicates are already defined properly.
+    male(X)     % X is a male
+    female(X)   % X is a female
+    parent(X,Y) % X is a parent of Y
+    diff(X,Y)    % X and Y are different people.
+
+Use these predicates to write the following rules. Note that sex matters and one cannot be a mother, father, etc. of oneself.
+
+1. mother(X, Y) that succeeds when X is the mother of Y
+        mother(X, Y) :- female(X), parent(X,Y).
+
+2. isMother/1 that succeeds when its argument is the mother of someone
+        isMother(X) :- female(X), parent(X, _).
+            OR
+        isMother(X) :- mother(X, _).
+
+3. sisters/2 that succeeds when the arguments are sisters with at least one parent in common
+        sisters(X,Y) :- female(X), female(Y), parent(Z,X), parent(Z,Y), diff(X,Y).
 */
