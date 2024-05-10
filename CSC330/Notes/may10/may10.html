@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="button test">
+        <title>Button Test Document</title>
+    </head>
+    <body>
+        <h1> Button Test </h1>
+        <p>The following is a javascript test to create a button that increments a counter when clicked.</p>
+        <h2 id="counter">0</h2> <!-- id attribute allows a javascript file to find this tag -->
+        <input type="button" id="incr-btn" value="INCREMENT" onclick="increment()"/>
+        <input type="button" id="reset-btn" value="RESET" onclick="reset()"/>
+        <!-- Add a save button and a p tag to save previous results -->
+        <input type="button" id="save-btn" value="SAVE" onclick="save()"/>
+        <p id="saved">Previous Results: </p> 
+        <script src="./may10.js"></script>
+    </body>
+</html>
