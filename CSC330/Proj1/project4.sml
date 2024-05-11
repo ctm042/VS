@@ -19,7 +19,7 @@ fun tokenize (str: string) =
                     extractTokens (cs, "", (String.str c) :: newTokens)                                         (*continue token extraction with rest of chars and the standalone token c is added to the newTokens list*)
                 end
             else                                                                                            (*else, the token is neither space or standalone token*)
-                extractTokens (cs, acc ^ String.str c, tokens)                                                  (*continue token extractiono and append current token to acc*)
+                extractTokens (cs, acc ^ String.str c, tokens)                                                  (*continue token extraction and append current token to acc*)
     in
         extractTokens (chars, "", [])                                                                   (*start tokenization with list of characters (exploded string) and an empty acc and token list*)
     end;

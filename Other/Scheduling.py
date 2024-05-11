@@ -173,26 +173,27 @@ passed("PHYS-262")
 
 #Summer 2024
 passed("STAT-405")
-passed("ENGL-363") # NOT AVAILABLE
+#CSC Directed Elective 2/2 (CSC-450) Computer Networks
+#passed("ENGL-363") not taking, take later
+
 
 #Fall 2024
-passed("CSC-310")
-passed("CSC-364")
-passed("CSC-403")
-#Minor/Concentration 1/4 (ELEN-242) Introduction to Microprocessors
+passed("CSC-310")   #TR 10-11:50 
+passed("CSC-403")   #MWF 3:30-4:45
+#MIND 324
+#Minor/Concentration 1/4 (ENGR-221) Electrical Engineering and Circuits 1
 
 
 #Winter 2025
 passed("CSC-405")
-#CSC Directed Elective 2/2 (CSC-450) Computer Networks
+passed("CSC-364") 
 #Math elective 1/1 
-
-#Minor/Concentration 2/4 (ELEN-333) Introduction to Digital Design
+#Minor/Concentration 2/4 (ELEN-242) Introduction to Microprocessors
 
 #Spring 2025
 passed("CSC-406")
-#Minor/Concentration 3/4 (ELEN-423) Embedded Systems
-#Minor/Concentration 4/4 (ENGR-221) Electrical Engineering and Circuits 1
+#Minor/Concentration 3/4 (ELEN-333) Introduction to Digital Design
+#Minor/Concentration 4/4 (ELEN-423) Embedded Systems
 
 for c in courses:
     if not c.passed and elicheck(c): 
